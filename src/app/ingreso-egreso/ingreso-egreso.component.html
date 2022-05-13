@@ -7,16 +7,16 @@
                     Especifique el monto y el tipo
                 </p>
 
-                <form>
+                <form [formGroup]="ingresoFomr" (ngSubmit)="guardar()" >
 
                     <div class="form-group">
                         <label>Descripción</label>
-                        <input type="text" class="form-control" placeholder="Descripción" name="descripcion">
+                        <input autocomplete="off" type="text" class="form-control" placeholder="Descripción" name="descripcion" formControlName="descripcion">
                     </div>
 
                     <div class="form-group">
                         <label>Monto</label>
-                        <input type="number" class="form-control" placeholder="Monto" name="monto">
+                        <input type="number" class="form-control" placeholder="Monto" name="monto" formControlName="monto" >
                         <p>
                             Debe de ser un monto positivo
                         </p>
@@ -25,14 +25,15 @@
                     <div class="form-group">
                         <label>Tipo</label>
                         <br>
-                        <button type="button" class="btn btn-primary btn-block">Ingreso</button>
-                        <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+                        <button *ngIf="tipo === 'Ingreso' " type="button" (click)=" tipo = 'Egreso' " class="btn btn-primary btn-block">{{ tipo }}</button>
+                        <button *ngIf="tipo === 'Egreso' " type="button" (click)=" tipo = 'Ingreso' " class="btn btn-warning btn-block">{{ tipo }} </button>
                     </div>
 
                     <hr>
-                    <button type="button" class="btn btn-success mr-2">
-                        <i class="fa fa-save"></i>
-                        Agregar
+                    <button type="submit" class="btn btn-success mr-2" [disabled]="ingresoFomr.invalid || loading" >
+                        <i class="fa fa-save" *ngIf="!loading "></i>
+                        <li class="fa fa-spin fa-sync" *ngIf="loading"></li>
+                        {{ (!loading) ? 'Agregar' : 'Guardando...' }}
                     </button>
 
                     <!-- 

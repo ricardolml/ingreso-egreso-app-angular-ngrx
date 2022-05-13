@@ -5,7 +5,12 @@
 export const environment = {
     production: false,
     firebase: {
-        
+        apiKey: 'AIzaSyBdLznJklfIx5wujo2rpuCuSi9pw0KVEtQ',
+        authDomain: 'ingreso-egreso-app-1c3b2.firebaseapp.com',
+        projectId: 'ingreso-egreso-app-1c3b2',
+        storageBucket: 'ingreso-egreso-app-1c3b2.appspot.com',
+        messagingSenderId: '683855364993',
+        appId: '1:683855364993:web:b3b78f1c17b31f3fd91e80'
     }
 };
 
